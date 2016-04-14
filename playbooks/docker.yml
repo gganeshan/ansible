@@ -1,0 +1,8 @@
+---
+  - hosts: cdb
+    tasks:
+      - name:
+        docker:
+          name: busybox
+          image: busybox
+          state: present

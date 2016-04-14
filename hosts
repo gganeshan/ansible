@@ -1,0 +1,5 @@
+[cdb]
+ip-172-31-24-188.us-west-2.compute.internal ansible_connection=local
+
+[minus_cdb]
+ip-172-31-24-188.us-west-2.compute.internal ansible_connection=local
