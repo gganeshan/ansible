@@ -1,7 +1,21 @@
+[ec2-user@ip-172-31-24-188 ansible]$ cat Dockerfile 
 FROM ubuntu:latest
 
 RUN apt-get install -y software-properties-common
 RUN apt-add-repository ppa:ansible/ansible
 RUN apt-get update
-RUN apt-get install -y ansible
-RUN apt-get install -y vim
+RUN apt-get install -y ansible vim
+RUN apt-get install -y python-setuptools python-dev 
+RUN easy_install pip 
+RUN pip install docker-py
+
+USER root
+
+RUN mkdir ./ansible
+RUN mkdir -p /root/.ssh
+
+COPY ./etc/id_rsa* /root/.ssh/
+COPY ./etc/config /root/.ssh/config
+COPY ./src/ ./ansible/
+
+WORKDIR ./ansible
